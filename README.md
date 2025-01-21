@@ -1,4 +1,4 @@
-[YooKassaAPI](https://img.shields.io/badge/0.1.0-blue?style=flat&logo=pypi&label=pypi&labelColor=gray)](https://github.com/Lems0n)
+[![YooKassaAPI](https://img.shields.io/badge/0.1.0-blue?style=flat&logo=pypi&label=pypi&labelColor=gray)](https://github.com/Lems0n)
 
 # YooKassa API Library
 
