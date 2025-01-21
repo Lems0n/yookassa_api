@@ -1,0 +1,21 @@
+[project]
+name = "yookassa_api"
+version = "0.1.0"
+description = "Библиотека для взаимодействия с API yookassa.ru. Имеется как синхронный, так и асинхронный варинт использования."
+authors = [
+    {name = "Lems0n",email = "abdulla.dev@mail.ru"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = "3.12.3"
+dependencies = [
+    "aiohttp (>=3.11.11,<4.0.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "pydantic (>=2.10.5,<3.0.0)",
+    "setuptools (>=75.8.0,<76.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
