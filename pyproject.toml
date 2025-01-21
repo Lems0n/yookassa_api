@@ -7,7 +7,7 @@ authors = [
 ]
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = "3.12.3"
+requires-python = ">=3.11"
 dependencies = [
     "aiohttp (>=3.11.11,<4.0.0)",
     "requests (>=2.32.3,<3.0.0)",
