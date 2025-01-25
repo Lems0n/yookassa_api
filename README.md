@@ -39,7 +39,7 @@ from yookassa_api.types import CurrencyType
 
 # Initialize the YooKassa client
 client = YooKassa(
-    api_key='SECRET_KEY',
+    'SECRET_KEY',
     shop_id=999999
 )
 

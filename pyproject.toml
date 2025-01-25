@@ -1,13 +1,13 @@
 [project]
 name = "yookassa_api"
-version = "0.1.0"
-description = "Библиотека для взаимодействия с API yookassa.ru. Имеется как синхронный, так и асинхронный варинт использования."
+version = "0.1.1"
+description = "Python Library for YooKassa API"
 authors = [
     {name = "Lems0n",email = "abdulla.dev@mail.ru"}
 ]
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = "^3.10"
 dependencies = [
     "aiohttp (>=3.11.11,<4.0.0)",
     "requests (>=2.32.3,<3.0.0)",
