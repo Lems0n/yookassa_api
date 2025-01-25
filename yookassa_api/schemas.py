@@ -193,6 +193,20 @@ class Payment(BaseModel):
     merchant_customer_id: Optional[str] = None
 
 
+class Refund(BaseModel):
+    id: str
+    payment_id: str
+    status: RefundStatus
+    cancellation_details: Optional[CancellationDetails] = None
+    reciept_registration: Optional[ReceiptRegistration] = None
+    created_at: datetime
+    amount: PaymentAmount
+    description: Optional[str] = None
+    sources: Optional[List] = None
+    deal: Optional[Deal] = None
+    refund_method: RefundMethod
+
+
 class PaymentsList(BaseModel):
     """
     Payments list
@@ -205,7 +219,7 @@ class RefundsList(BaseModel):
     """
     Refunds list
     """
-    list: List[Payment]
+    list: List[Refund]
     cursor: Optional[str] = None
 
 
@@ -319,15 +333,3 @@ class Airline(BaseModel):
     flights: Optional[List[Flight]]  = None
 
 
-class Refund(BaseModel):
-    id: str
-    payment_id: str
-    status: RefundStatus
-    cancellation_details: Optional[CancellationDetails] = None
-    reciept_registration: Optional[ReceiptRegistration] = None
-    created_at: datetime
-    amount: PaymentAmount
-    description: Optional[str] = None
-    sources: Optional[List] = None
-    deal: Optional[Deal] = None
-    refund_method: RefundMethod
