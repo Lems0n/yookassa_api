@@ -7,7 +7,7 @@
 [![YooKassaAPI](https://img.shields.io/badge/3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20%7C%203.14%20-yellow?logo=python&logoColor=yellow&label=python&labelColor=gray)](https://github.com/Lems0n)
 </div>
 
-# 📌 Description
+## 📌 Description
 
 YooKassa API Library is a Python package designed to simplify interaction with YooKassa's API. This library provides a convenient way to handle payments, refunds, and various operations by utilizing the comprehensive methods available in the YooKassa API.
 
