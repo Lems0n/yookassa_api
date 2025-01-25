@@ -1,10 +1,14 @@
 from datetime import datetime
-from typing import List, Union, Optional
+from typing import List, Literal, Union, Optional
 
 from pydantic import BaseModel
 
 from yookassa_api.types import CurrencyType
-from yookassa_api.types import PaymentStatus, ReceiptRegistration, CancellationParty, CancellationReason, ConfirmationType
+from yookassa_api.types import (
+    PaymentStatus, ReceiptRegistration, 
+    CancellationParty, CancellationReason, 
+    ConfirmationType, RefundStatus, RefundMethodType
+)
 
 
 class Confirmation(BaseModel):
@@ -88,6 +92,42 @@ class PaymentMethod(BaseModel):
     account_number: Optional[str] = None
 
 
+class Article(BaseModel):
+    article_number: int
+    payment_article_number: int
+    tru_code: str
+    quantity: int
+
+
+class ElectronicCertificateDetails(BaseModel):
+    basket_id: str
+    amount: PaymentAmount
+
+
+class ElectronicCertificate(BaseModel):
+    """
+    Electronic certificate
+    """
+    type: str = Literal["electronic_certificate"]
+    articles: List[Article]
+    electronic_certificate: ElectronicCertificateDetails
+
+
+class SBP(BaseModel):
+    """
+    SBP
+    """
+    type: str = Literal["sbp"]
+    sbp_operation_id: str
+
+
+class RefundMethod(BaseModel):
+    type: Union[
+        ElectronicCertificate,
+        SBP
+    ]
+
+
 class CancellationDetails(BaseModel):
     party: CancellationParty
     reason: CancellationReason
@@ -158,6 +198,14 @@ class PaymentsList(BaseModel):
     Payments list
     """
     list: List[Payment] 
+    cursor: Optional[str] = None
+
+
+class RefundsList(BaseModel):
+    """
+    Refunds list
+    """
+    list: List[Payment]
     cursor: Optional[str] = None
 
 
@@ -271,3 +319,15 @@ class Airline(BaseModel):
     flights: Optional[List[Flight]]  = None
 
 
+class Refund(BaseModel):
+    id: str
+    payment_id: str
+    status: RefundStatus
+    cancellation_details: Optional[CancellationDetails] = None
+    reciept_registration: Optional[ReceiptRegistration] = None
+    created_at: datetime
+    amount: PaymentAmount
+    description: Optional[str] = None
+    sources: Optional[List] = None
+    deal: Optional[Deal] = None
+    refund_method: RefundMethod

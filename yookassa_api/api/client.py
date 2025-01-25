@@ -3,14 +3,18 @@ from datetime import datetime
 from typing import List, Union, Optional, Any
 
 from yookassa_api.api.base import AIOBaseClient, BaseClient
-from yookassa_api.api.methods import CreatePayment, GetPayments, GetPayment, CapturePayment, CancelPayment
+from yookassa_api.api.methods import (
+    CreatePayment, GetPayments, 
+    GetPayment, CapturePayment, CancelPayment,
+    CreateRefund, GetRefund, GetRefunds
+)
 from yookassa_api.schemas import (
     Confirmation, Payment, PaymentsList,
-    PaymentAmount, Receipt, Airline,
+    PaymentAmount, Receipt, Airline, RefundsList,
     Transfer, Deal, Recipient,
-    PaymentMethod
+    PaymentMethod, Refund
 )
-from yookassa_api.types import PaymentMethodType, PaymentStatus
+from yookassa_api.types import PaymentMethodType, PaymentStatus, RefundStatus
 
  
 
@@ -153,6 +157,100 @@ class AsyncIOYooKassa(AIOBaseClient):
         headers = {'Idempotence-Key': self._get_idempotence_key()}
         result = await self._send_request(method, headers=headers)
         return Payment(**result)
+    
+    async def create_refund(
+        self, 
+        payment_id: str,
+        amount: PaymentAmount,
+        description: Optional[str] = None,
+        receipt: Optional[Receipt] = None,
+        sources: Optional[List] = None,
+        deal: Optional[Deal] = None,
+        **kwargs
+    ) -> None:
+        """
+        Create refund
+        More detailed documentation:
+        https://yookassa.ru/developers/api#refund_object
+
+        :param payment_id: Payment ID
+        :param amount: Payment Amount
+        :param description: description
+        :param receipt: Receipt Info
+        :param sources: sources
+        :param deal: deal
+        :return: Payment
+        """
+        params = CreateRefund.build_params(
+            payment_id=payment_id,
+            description=description,
+            amount=amount,
+            receipt=receipt,
+            sources=sources,
+            deal=deal,
+            **kwargs)
+        headers = {'Idempotence-Key': self._get_idempotence_key()}
+        result = await self._send_request(
+            CreateRefund, 
+            json=params, 
+            headers=headers
+        )
+        return Refund(**result)
+
+    async def get_refunds(
+        self,
+        created_at_gte = None, 
+        created_at_lt = None, 
+        payment_id: Optional[str] = None, 
+        status: Optional[RefundStatus] = None,
+        limit: Optional[int] = None,
+        cursor: Optional[str] = None,
+        **kwargs
+    ):
+        """
+        Get all refunds
+        More detailed documentation:
+        https://yookassa.ru/developers/api#get_refunds_list
+        
+        :param created_at_gte: created at gte
+        :param created_at_lt: created at lt
+        :param payment_id: payment ID
+        :param status: status
+        :param limit: limit
+        :param cursor: cursor
+
+        return: Refund
+        """
+        params = GetRefunds.build_params(
+            created_at_gte, 
+            created_at_lt, 
+            payment_id=payment_id,
+            status=status,
+            limit=limit,
+            cursor=cursor,
+            **kwargs
+        )
+        headers = {'Idempotence-Key': self._get_idempotence_key()}
+        result = await self._send_request(
+            GetRefunds, 
+            json=params,
+            headers=headers
+        )
+        return RefundsList(**result)
+
+    async def get_refund(self, refund_id: str) -> Refund:
+        """
+        Get refund by id
+        More detailed documentation:
+        https://yookassa.ru/developers/api#get_refunds_list
+
+        :param refund_id: refund ID
+
+        :return: Refund
+        """
+        method = GetRefund.build(refund_id=refund_id)
+        result = await self._send_request(method)
+        return Refund(**result)
 
     @staticmethod
     def _get_idempotence_key() -> str:
@@ -298,6 +396,101 @@ class YooKassa(BaseClient):
         headers = {'Idempotence-Key': self._get_idempotence_key()}
         result = self._send_request(method, headers=headers)
         return Payment(**result)
+
+    def create_refund(
+        self, 
+        payment_id: str,
+        amount: PaymentAmount,
+        description: Optional[str] = None,
+        receipt: Optional[Receipt] = None,
+        sources: Optional[List] = None,
+        deal: Optional[Deal] = None,
+        **kwargs
+    ) -> None:
+        """
+        Create refund
+        More detailed documentation:
+        https://yookassa.ru/developers/api#refund_object
+
+        :param payment_id: Payment ID
+        :param amount: Payment Amount
+        :param description: description
+        :param receipt: Receipt Info
+        :param sources: sources
+        :param deal: deal
+        :return: Payment
+        """
+        params = CreateRefund.build_params(
+            payment_id=payment_id,
+            description=description,
+            amount=amount,
+            receipt=receipt,
+            sources=sources,
+            deal=deal,
+            **kwargs)
+        headers = {'Idempotence-Key': self._get_idempotence_key()}
+        result = self._send_request(
+            CreateRefund, 
+            json=params, 
+            headers=headers
+        )
+        return Refund(**result)
+
+    def get_refunds(
+        self,
+        created_at_gte = None, 
+        created_at_lt = None, 
+        payment_id: Optional[str] = None, 
+        status: Optional[RefundStatus] = None,
+        limit: Optional[int] = None,
+        cursor: Optional[str] = None,
+        **kwargs
+    ):
+        """
+        Get all refunds
+        More detailed documentation:
+        https://yookassa.ru/developers/api#get_refunds_list
+        
+        :param created_at_gte: created at gte
+        :param created_at_lt: created at lt
+        :param payment_id: payment ID
+        :param status: status
+        :param limit: limit
+        :param cursor: cursor
+
+        return: Refund
+        """
+        params = GetRefunds.build_params(
+            created_at_gte, 
+            created_at_lt, 
+            payment_id=payment_id,
+            status=status,
+            limit=limit,
+            cursor=cursor,
+            **kwargs
+        )
+        headers = {'Idempotence-Key': self._get_idempotence_key()}
+        result = self._send_request(
+            GetRefunds, 
+            json=params,
+            headers=headers
+        )
+        return RefundsList(**result)
+
+    def get_refund(self, refund_id: str) -> Refund:
+        """
+        Get refund by id
+        More detailed documentation:
+        https://yookassa.ru/developers/api#get_refunds_list
+
+        :param refund_id: refund ID
+
+        :return: Refund
+        """
+        method = GetRefund.build(refund_id=refund_id)
+        result = self._send_request(method)
+        return Refund(**result)
+
 
     @staticmethod
     def _get_idempotence_key() -> str:

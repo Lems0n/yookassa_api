@@ -8,7 +8,7 @@ class YookassaBadRequest(BaseAPIError):
 
 class YookassaNotFound(BaseAPIError):
     """Not found error"""
-    match = "not_found"
+    detail = "not_found"
 
 
 class YookassaForbidden(BaseAPIError):

@@ -125,3 +125,61 @@ class CancelPayment(PaymentMethod):
     path = "/payments/{payment_id}/cancel"
     
 
+class CreateRefund(APIMethod):
+    """
+    Create refund
+    """
+    http_method = "POST"
+    path = "/refunds"
+
+    @staticmethod
+    def build_params(payment_id, description, 
+                     amount, receipt, 
+                     sources, deal, **kwargs):
+        params = {
+            "payment_id": payment_id,
+            "amount": amount.model_dump(),
+            "description": description,
+            "receipt": receipt.model_dump() if receipt else None,
+            "sources": sources.model_dump() if sources else None,   
+            "deal": deal.model_dump() if deal else None,    
+            **kwargs
+        }
+        return params
+    
+
+class GetRefunds(APIMethod):
+    """
+    Get refunds
+    """
+    http_method = "GET"
+    path = "/refunds"
+
+    @staticmethod
+    def build_params(
+        created_at_gte, 
+        created_at_lt, 
+        payment_id,
+        status,
+        limit, 
+        cursor, 
+        **kwargs
+    ):
+        params = {
+            "created_at_gte": created_at_gte,
+            "created_at_lt": created_at_lt,
+            "payment_id": payment_id if payment_id else None,
+            "status": status if status else None,
+            "limit": limit if limit else None,
+            "cursor": cursor if cursor else None,
+            **kwargs
+        }
+        return params
+    
+
+class GetRefund(APIMethod):
+    """
+    Get refund
+    """
+    http_method = "GET"
+    path = "/refunds/{refund_id}"

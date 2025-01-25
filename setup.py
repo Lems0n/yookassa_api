@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='yookassa_api',
-    version='0.1.2',
+    version='0.2.2',
     author='Lemson',
     author_email='abdulla.dev@mail.ru',
     description='Python package for YooKassa API',

@@ -3,6 +3,6 @@ from yookassa_api.api import (
     AsyncYooKassaAPI, YooKassaAPI
 )
 from yookassa_api.schemas import (
-    PaymentAmount, Confirmation
+    PaymentAmount, Confirmation, RefundStatus
 )
 

@@ -14,6 +14,12 @@ class PaymentStatus(StrEnum):
     PENDING = 'pending'
 
 
+class RefundStatus(StrEnum):
+    PENDING = 'pending'
+    SUCCEEDED = 'succeeded'
+    CANCELLATION_DETAILS = "cancellation_details"
+
+
 class ConfirmationType(StrEnum):
     """
     Confirmation type
@@ -105,3 +111,9 @@ class PaymentMethodType(StrEnum):
     MOBILE_BALANCE = 'mobile_balance'
     CASH = 'cash'
     INSTALLMENTS = 'installments'
+
+
+class RefundMethodType(StrEnum):
+    SBP = "sbp"
+    ELECTRONIC_CERTIFICATE = "electronic_certificate"
+    

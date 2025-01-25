@@ -2,14 +2,23 @@
 
 # YooKassa API Library
 
-[![YooKassaAPI](https://img.shields.io/badge/0.1.2-blue?style=flat&logo=pypi&label=pypi&labelColor=gray)](https://github.com/Lems0n)
+[![YooKassaAPI](https://img.shields.io/badge/0.2.2-blue?style=flat&logo=pypi&label=pypi&labelColor=gray)](https://github.com/Lems0n)
 [![YooKassaAPI](https://img.shields.io/badge/license-MIT-12C4C4?style=flat&logo=gitbook&logoColor=12C4C4)](https://github.com/Lems0n)
 [![YooKassaAPI](https://img.shields.io/badge/3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13%20-yellow?logo=python&logoColor=yellow&label=python&labelColor=gray)](https://github.com/Lems0n)
 </div>
 
+## Table of Contents
+
+- [description](#-description)
+- [features](#-features)
+- [Installation](#installation)
+- [Getting Started](#-getting-started)
+- [Author](#-author-of-yookassa-api-library)
+- [License](#license)
+
 ## 📌 Description
 
-YooKassa API Library is a Python package designed to simplify interaction with YooKassa's API. This library provides a convenient way to handle payments, refunds, and various operations by utilizing the comprehensive methods available in the YooKassa API.
+A Python library for interacting with the YooKassa API. This library allows you to create, get, and cancel payments, as well as handle refunds.
 
 Also there is both a synchronous and asynchronous variation
 
@@ -17,6 +26,7 @@ Also there is both a synchronous and asynchronous variation
 
 - Easy-to-use interface for YooKassa API.
 - Supports payment creation, capture, and cancellation.
+- Supports refund creation, receiving
 
 ## 🗃️ Installation
 
@@ -61,6 +71,10 @@ payment = client.create_payment(
 )
 print(payment)
 ```
+
+## Licence
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👤 Author of YooKassa API Library
 **© [Lemson](https://t.me/nveless)**
