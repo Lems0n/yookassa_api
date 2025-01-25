@@ -13,8 +13,8 @@
 - [features](#-features)
 - [Installation](#installation)
 - [Getting Started](#-getting-started)
-- [Author](#-author-of-yookassa-api-library)
 - [License](#license)
+- [Author](#-author-of-yookassa-api-library)
 
 ## 📌 Description
 
@@ -72,7 +72,7 @@ payment = client.create_payment(
 print(payment)
 ```
 
-## Licence
+## 📄 Licence
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
