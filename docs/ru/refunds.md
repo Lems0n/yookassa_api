@@ -53,6 +53,7 @@ if __name__ == '__main__':
 ```python
 from yookassa_api import YooKassa, RefundStatus
 
+
 def main():
     with YooKassa(
         api_key='API_KEY',
@@ -103,6 +104,7 @@ if __name__ == '__main__':
 
 ```python
 from yookassa_api import YooKassa
+
 
 def main():
     with YooKassa(
