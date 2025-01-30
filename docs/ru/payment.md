@@ -5,7 +5,7 @@ from yookassa_api import (
     YooKassa, PaymentAmount,
     Confirmation
 )
-from yookassa_api.enums import ConfirmationType
+from yookassa_api.types import ConfirmationType
 
 
 def main():
@@ -36,7 +36,7 @@ from yookassa_api import (
     YooKassa, PaymentAmount,
     Confirmation
 )
-from yookassa_api.enums import ConfirmationType
+from yookassa_api.types import ConfirmationType
 
 
 def main():
