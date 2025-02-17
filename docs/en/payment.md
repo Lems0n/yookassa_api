@@ -67,14 +67,14 @@ if __name__ == '__main__':
 import asyncio
 
 from yookassa_api import (
-    AsyncIOYooKassa, PaymentAmount,
+    AsyncYooKassa, PaymentAmount,
     Confirmation
 )
 from yookassa_api.types import ConfirmationType
 
 
 async def main():
-    client = AsyncIOYooKassa(
+    client = AsyncYooKassa(
         api_key='API_KEY',    
         shop_id=999999
     )                               
@@ -126,14 +126,14 @@ if __name__ == '__main__':
 import asyncio
 
 from yookassa_api import (
-    AsyncIOYooKassa, PaymentAmount,
+    AsyncYooKassa, PaymentAmount,
     Confirmation
 )
 from yookassa_api.types import ConfirmationType
 
 
 async def main():
-    client = AsyncIOYooKassa(
+    client = AsyncYooKassa(
         api_key='API_KEY',
         shop_id=999999
     )
@@ -178,14 +178,14 @@ if __name__ == '__main__':
 import asyncio
 
 from yookassa_api import (
-    AsyncIOYooKassa, PaymentAmount,
+    AsyncYooKassa, PaymentAmount,
     Confirmation
 )
 from yookassa_api.types import ConfirmationType
 
 
 async def main():
-    client = AsyncIOYooKassa(
+    client = AsyncYooKassa(
         api_key='API_KEY',
         shop_id=999999
     )

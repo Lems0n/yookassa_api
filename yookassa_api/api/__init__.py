@@ -1,4 +1,4 @@
 from .client import (
-    AsyncIOYooKassa, YooKassa,
-    AsyncYooKassaAPI, YooKassaAPI
+    AsyncClient, Client,
+    AsyncYooKassa, YooKassa
 )

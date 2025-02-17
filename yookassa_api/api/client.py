@@ -2,7 +2,7 @@ import uuid
 from datetime import datetime
 from typing import List, Union, Optional, Any
 
-from yookassa_api.api.base import AIOBaseClient, BaseClient
+from yookassa_api.api.base import AsyncBaseClient, BaseClient
 from yookassa_api.api.methods import (
     CreatePayment, GetPayments, 
     GetPayment, CapturePayment, CancelPayment,
@@ -18,7 +18,7 @@ from yookassa_api.types import PaymentMethodType, PaymentStatus, RefundStatus
 
  
 
-class AsyncIOYooKassa(AIOBaseClient):
+class AsyncClient(AsyncBaseClient):
     """Asynchronous client for YooKassa API"""
     def __init__(self, api_key: str, shop_id: int):
         super().__init__(api_key, shop_id)
@@ -257,7 +257,7 @@ class AsyncIOYooKassa(AIOBaseClient):
         return uuid.uuid4().hex
 
 
-class YooKassa(BaseClient):
+class Client(BaseClient):
     """Synchronous client for YooKassa API"""
     def __init__(self, api_key: str, shop_id: Union[int, str]):
         super().__init__(api_key, shop_id)
@@ -498,5 +498,5 @@ class YooKassa(BaseClient):
     
 
 
-AsyncYooKassaAPI = AsyncIOYooKassa
-YooKassaAPI = YooKassa
+AsyncYooKassa = AsyncClient
+YooKassa = Client

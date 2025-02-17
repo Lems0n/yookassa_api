@@ -1,6 +1,6 @@
 [project]
 name = "yookassa_api"
-version = "0.2.3"
+version = "0.3.3"
 description = "Python Library for YooKassa API"
 authors = [
     {name = "Lems0n",email = "abdulla.dev@mail.ru"}
@@ -12,7 +12,6 @@ dependencies = [
     "aiohttp (>=3.11.11,<4.0.0)",
     "requests (>=2.32.3,<3.0.0)",
     "pydantic (>=2.10.5,<3.0.0)",
-    "setuptools (>=75.8.0,<76.0.0)"
 ]
 
 

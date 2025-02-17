@@ -1,6 +1,6 @@
 from yookassa_api.api import (
-    AsyncIOYooKassa, YooKassa,
-    AsyncYooKassaAPI, YooKassaAPI
+    AsyncYooKassa, YooKassa,
+    AsyncClient, Client
 )
 from yookassa_api.schemas import (
     PaymentAmount, Confirmation, RefundStatus

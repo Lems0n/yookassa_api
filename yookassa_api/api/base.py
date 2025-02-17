@@ -1,5 +1,5 @@
 from abc import ABC
-from typing import Dict, Optional, Self, Type, Union, Callable
+from typing import Dict, Optional, Self, Type, Union
 
 from aiohttp import ClientSession, BasicAuth
 from requests import request
@@ -9,7 +9,7 @@ from yookassa_api.api.methods import APIMethod
 from yookassa_api.exceptions import BaseAPIError
 
 
-class AIOBaseClient(ABC):
+class AsyncBaseClient(ABC):
     """
     Base API Client
     """

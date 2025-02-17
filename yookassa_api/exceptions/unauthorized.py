@@ -2,7 +2,7 @@ from .base import BaseAPIError
 
 
 
-class YookassaInvalidCredentials(BaseAPIError):
+class YooKassaInvalidCredentials(BaseAPIError):
     """Invalid credentials error"""
     detail = "invalid_credentials"
 

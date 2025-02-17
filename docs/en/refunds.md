@@ -26,13 +26,13 @@ if __name__ == '__main__':
 import asyncio
 
 from yookassa_api import (
-    AsyncIOYooKassa, RefundStatus,
+    AsyncYooKassa, RefundStatus,
     PaymentAmount
 )
 
 
 async def main():
-    async with AsyncIOYooKassa(
+    async with AsyncYooKassa(
         api_key='API_KEY',
         shop_id=999999
     ) as client:
@@ -77,12 +77,12 @@ if __name__ == '__main__':
 import asyncio
 
 from yookassa_api import (
-    AsyncIOYooKassa, RefundStatus
+    AsyncYooKassa, RefundStatus
 )
 
 
 async def main():
-    async with AsyncIOYooKassa(
+    async with AsyncYooKassa(
         api_key='API_KEY',
         shop_id=999999
     ) as client:
@@ -123,7 +123,7 @@ if __name__ == '__main__':
 import asyncio
 
 from yookassa_api import (
-    AsyncIOYooKassa
+    AsyncYooKassa
 )
 
 
